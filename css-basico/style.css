@@ -2,6 +2,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 8px;
 }
 
 p.verso {
@@ -13,15 +14,14 @@ p.mote {
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 4px;
+    text-align: center;
+    line-height: 5px;
 }
 
 .buttonLink {
     text-decoration: none;
-    padding: 8px;
+    font-weight: bold;
+    padding: 10px;
     background-color: #DDDDDD;
     color: black;
     border-radius: 5px;
@@ -42,4 +42,32 @@ p.mote {
 
 div.poeta img {
     border-radius: 50%;
+}
+
+table {
+    width: 500px;
+}
+
+th, td {
+    text-align: left;
+    padding: 20px;
+}
+
+th {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+a {
+    text-decoration: none;
+}
+
+td a:hover {
+    color: blue;
 }
