@@ -1,0 +1,30 @@
+body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.itens {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+div#botoes {
+    padding-bottom: 10px;
+}
+
+div#botoes button {
+    padding: 10px;
+    font-weight: bold;
+    border-color: black;
+    border-radius: 5px;
+    font-size: large;
+}
+
+div#botoes button:hover {
+    background-color: #DDDDDD;
+}

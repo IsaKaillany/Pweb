@@ -3,18 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Javascript Básico 2</title>
-    <style>
-        .itens {
-            color: blueviolet;
-            font-size: 50px;
-            font-weight: bold;
-        }
-
-        /* #botoes {
-            text-align: center;
-        } */
-    </style>
 </head>
 <body>
     <div id="botoes">
@@ -22,7 +12,9 @@
         <button id="botaoEmbaralhar">Embaralhar cervejas</button>
     </div>
     
-    <div id="meuAmor"></div>      
+    <div id="conteiner">
+        <div id="meuAmor"></div>      
+    </div>
  </body>   
 
  <script>
@@ -48,7 +40,7 @@
     let botaoEmbaralhar = document.getElementById("botaoEmbaralhar");
     botaoEmbaralhar.addEventListener("click", function() {
         cervejas.sort(function() {
-            return 0.5 - Math.random();
+            return 0.3 - Math.random();
         });
         carregarDiv();
     });   
