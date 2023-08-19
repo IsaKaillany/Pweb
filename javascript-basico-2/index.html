@@ -44,5 +44,13 @@
         cervejas.sort();
         carregarDiv();
     });                     
+
+    let botaoEmbaralhar = document.getElementById("botaoEmbaralhar");
+    botaoEmbaralhar.addEventListener("click", function() {
+        cervejas.sort(function() {
+            return 0.5 - Math.random();
+        });
+        carregarDiv();
+    });   
  </script>
 </html>
