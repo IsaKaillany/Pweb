@@ -3,27 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Javascript Básico 2</title>
+    <style>
+        .itens {
+            color: blueviolet;
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        /* #botoes {
+            text-align: center;
+        } */
+    </style>
 </head>
 <body>
-    <div id="meu amor"><button id="botaoCarregar">Carregando cervejas...</button></div>            
+    <div id="botoes">
+        <button id="botaoOrdenar">Ordenar cervejas</button>
+        <button id="botaoEmbaralhar">Embaralhar cervejas</button>
+    </div>
+    
+    <div id="meuAmor"></div>      
  </body>   
 
  <script>
-    let cervejas = ["Guiness", "Desperados", "Becks"]
+    let cervejas = ["Guiness", "Desperados", "Becks"];
 
     function transformar(item){
-        return `<h1>${item}</h1>`
+        return `<div class="itens">${item}</div>`;
     }
 
     function carregarDiv(){
-       let div = document.getElementById("meu amor")
-    //    let cervejasHtml = [`<h1>${cervejas[0]}</h1>`,`<h1>${cervejas[1]}</h1>`, `<h1>${cervejas[2]}</h1>`] 
-        let cervejasHtml = cervejas.map(transformar) 
-        div.innerHTML = `${cervejasHtml.join("\n")}`
+        let div = document.getElementById("meuAmor");
+        let cervejasHtml = cervejas.map(transformar); 
+        
+        div.innerHTML = `${cervejasHtml.join("\n")}`;
     }
   
-    let botao = document.getElementById("botaoCarregar")
-    botao.addEventListener("click", carregarDiv)                 
+    let botaoOrdenar = document.getElementById("botaoOrdenar");
+    botaoOrdenar.addEventListener("click", function() {
+        cervejas.sort();
+        carregarDiv();
+    });                     
  </script>
 </html>
