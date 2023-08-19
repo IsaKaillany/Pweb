@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Básico 1</title>
+    <style>
+        body {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #botaoCarregar {
+            padding: 10px;
+            font-weight: bold;
+            border-color: black;
+            border-radius: 5px;
+            font-size: large;
+        }
+
+        #botaoCarregar:hover {
+            background-color: #DDDDDD;
+        }
+
+        #meuAmor {
+          opacity: 0;
+          transition: opacity 0.5s ease-in-out;
+        }
+      
+        #meuAmor.effect {
+          opacity: 1;
+        }
+      </style>      
+</head>
+<body>
+    <div>
+        <button id="botaoCarregar">Carregando cervejas...</button>
+    </div>
+    
+    <div id="meuAmor"></div>          
+
+    <script>
+        let display = false;
+
+        function carregarDiv() {
+            let div = document.getElementById("meuAmor");
+
+            if (!display) {
+                div.innerHTML = `<h1>Guinness</h1>`;
+                div.classList.add("effect");
+            } else {
+                div.classList.remove("effect");
+                div.addEventListener("transitionend", () => {
+                    if (!display) {
+                        div.innerHTML = ""; 
+                    }
+                });
+            }
+
+            display = !display;
+        }
+
+        let botao = document.getElementById("botaoCarregar");
+        botao.addEventListener("click", carregarDiv);      
+    </script>
+</body>
+</html>
