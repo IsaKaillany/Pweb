@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>JS - Arrow e Callback Functions</title>
+</head>
+<body>
+    <div><button id="botaoCarregar">Carregando cervejas...</button></div>
+    <div id="meuAmor"></div>            
+ </body>   
+
+ <script>
+    let cervejas = ["Guiness", "Desperados", "Becks"]
+
+    const carregarDiv = () => {
+        const div = document.getElementById("meuAmor")
+        const cervejasHtml = cervejas.map(item => `<h1>${item}</h1>`) 
+        div.innerHTML = `${cervejasHtml.join("\n")}`
+    }
+
+    let botao = document.getElementById("botaoCarregar")
+    botao.addEventListener("click", carregarDiv)                 
+ </script>
+</html>
