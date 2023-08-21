@@ -7,20 +7,41 @@
     <title>JS - Arrow e Callback Functions</title>
 </head>
 <body>
-    <div><button id="botaoCarregar">Carregando cervejas...</button></div>
-    <div id="meuAmor"></div>            
+    <div id="botoes">
+        <a href="#" id="botaoCarregar">Carregar músicas</a>
+        <a href="#" id="botaoOrdenar">Ordenar músicas</a>
+        <a href="#" id="botaoEmbaralhar">Embaralhar músicas</a>
+    </div>
+    
+    <div id="conteiner">
+        <div id="meuAmor"></div>      
+    </div>        
  </body>   
 
  <script>
-    let cervejas = ["Guiness", "Desperados", "Becks"]
+    let songs = ["Do I Wanna Know", "R U Mine?", "Mad Sounds", "Arabella", "I Wanna Be Yours"];
 
-    const carregarDiv = () => {
-        const div = document.getElementById("meuAmor")
-        const cervejasHtml = cervejas.map(item => `<h1>${item}</h1>`) 
-        div.innerHTML = `${cervejasHtml.join("\n")}`
+    const carregarDiv = (songs) => {
+        const div = document.getElementById("meuAmor");
+        const songsHtml = songs.map(song => `<h1>${song}</h1>`); 
+        div.innerHTML = `${songsHtml.join("\n")}`;
     }
 
-    let botao = document.getElementById("botaoCarregar")
-    botao.addEventListener("click", carregarDiv)                 
+    let botaoCarregar = document.getElementById("botaoCarregar");
+    botaoCarregar.addEventListener("click", () => carregarDiv(songs));
+
+    let botaoOrdenar = document.getElementById("botaoOrdenar");
+    botaoOrdenar.addEventListener("click", function() {
+        const ordenarLivros = [...songs].sort();
+        carregarDiv(ordenarLivros);
+    });                     
+
+    let botaoEmbaralhar = document.getElementById("botaoEmbaralhar");
+    botaoEmbaralhar.addEventListener("click", function() {
+        const embaralharSongs = [...songs].sort(function() {
+            return 0.3 - Math.random();
+        });
+        carregarDiv(embaralharSongs);
+    });           
  </script>
 </html>

@@ -1,0 +1,32 @@
+body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.itens {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+div#botoes {
+    padding-bottom: 10px;
+}
+
+div#botoes a {
+    text-decoration: none;
+    padding: 10px;
+    font-weight: bold;
+    background-color: #a52a2a;
+    color: white;
+    border-radius: 5px;
+    font-size: large;
+}
+
+div#botoes a:hover {
+    background-color: #bc5050;
+}
