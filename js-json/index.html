@@ -11,9 +11,11 @@
         <button id="botaoCarregar">Carregando cervejas...</button>
     </div>
     <table id="cervejasDiv">
-        <tr>
-            <th>Nome</th>
+        <tr id="tableHead">
+            <!-- <th class="tableHead"></th>
             <th>Álcool</th>
+            <th>Style</th>
+            <th>Ibu</th> -->
         </tr>
         <tbody id="cervejasTable"></tbody>
     </table>            
@@ -23,33 +25,55 @@
     let cervejas = [
         {
             name: "Guiness", 
-            alcohol: "10%"            
+            alcohol: "10%",
+            style: "Red Ale",
+            ibu: "15"            
         }, 
         {
             name: "Desperados",
-            alcohol: "6%"             
+            alcohol: "6%",
+            style: "English IPA",
+            ibu: "20"          
         }, 
         {
             name: "Becks",
-            alcohol: "5%"             
+            alcohol: "5%",
+            style: "Imperial Stout",
+            ibu: "30"              
+        },
+        {
+            name: "Sierra Nevada Pale Ale",
+            alcohol: "5.6%",
+            style: "American Pale Ale",
+            ibu: "38"              
+        },
+        {
+            name: "Samuel Adams Boston Lager",
+            alcohol: "4.9%",
+            style: "Vienna Lager",
+            ibu: "30"              
         }
     ]; 
 
     //cs é um array de cervejas
-    const carregarDiv = cs => {
-        const div = document.getElementById("cervejasTable");
+    const carregarDiv = (cs, targetId = "cervejasDiv",  lista = ["Nome", "Álcool", "Estilo", "Amargor"]) => {
+        const tableBody = document.getElementById(targetId);
+        const tableHead = document.getElementById("tableHead");
+        tableHead.innerHTML = lista.map(header => `<th>${header}</th>`).join("");
     //    const itensHtml = cs.map( item => `<div>${item.name} -- ${item.alcohol}</div>` );
     //    const itensHtml = cs.map(({name,alcohol}) => `<div>${name} -- ${alcohol}</div>`); 
         const itensHtml = cs.map(item => 
             `<tr>
                 <td>${item['name']}</td>
                 <td>${item['alcohol']}</td>
+                <td>${item['style']}</td>
+                <td>${item['ibu']}</td>
             </tr>`
         );
-        div.innerHTML = `${itensHtml.join("\n")}`;
+        tableBody.innerHTML = `${itensHtml.join("\n")}`;
     }
 
     let botao = document.getElementById("botaoCarregar");
-    botao.addEventListener("click", () => carregarDiv(cervejas));                 
+    botao.addEventListener("click", () => carregarDiv(cervejas, "cervejasTable",));                 
  </script>
 </html>
