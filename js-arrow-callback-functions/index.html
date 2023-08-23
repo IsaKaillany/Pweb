@@ -21,10 +21,10 @@
  <script>
     let songs = ["Do I Wanna Know", "R U Mine?", "Mad Sounds", "Arabella", "I Wanna Be Yours"];
 
-    const carregarDiv = (songs) => {
+    const carregarDiv = (sng) => {
         const div = document.getElementById("meuAmor");
-        const songsHtml = songs.map(song => `<h1>${song}</h1>`); 
-        div.innerHTML = `${songsHtml.join("\n")}`;
+        const itensHtml = sng.map(song => `<h1>${song}</h1>`); 
+        div.innerHTML = `${itensHtml.join("\n")}`;
     }
 
     let botaoCarregar = document.getElementById("botaoCarregar");
