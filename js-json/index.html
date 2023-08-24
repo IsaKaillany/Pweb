@@ -51,20 +51,17 @@
     ]; 
 
     //cs é um array de cervejas
-    const carregarDiv = (cs, targetId = "cervejasDiv",  lista = ["Nome", "Álcool", "Estilo", "Amargor"]) => {
+    const carregarDiv = (cs, targetId = "cervejasDiv",  head = ["Nome", "Álcool", "Estilo", "Amargor"], prop = ["name", "alcohol", "style", "ibu"]) => {
         const tableBody = document.getElementById(targetId);
         const tableHead = document.getElementById("tableHead");
-        tableHead.innerHTML = lista.map(header => `<th>${header}</th>`).join("");
+        tableHead.innerHTML = head.map(header => `<th>${header}</th>`).join("");
     //    const itensHtml = cs.map( item => `<div>${item.name} -- ${item.alcohol}</div>` );
     //    const itensHtml = cs.map(({name,alcohol}) => `<div>${name} -- ${alcohol}</div>`); 
-        const itensHtml = cs.map(item => 
-            `<tr>
-                <td>${item['name']}</td>
-                <td>${item['alcohol']}</td>
-                <td>${item['style']}</td>
-                <td>${item['ibu']}</td>
-            </tr>`
-        );
+        const itensHtml = cs.map(item => { 
+            const itemProp = prop.map(obj => `<td>${item[obj]}</td>`).join("");
+            return `<tr>${itemProp}</tr>`;
+        });
+        
         tableBody.innerHTML = `${itensHtml.join("\n")}`;
     }
 
