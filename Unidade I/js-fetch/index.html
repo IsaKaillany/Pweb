@@ -3,36 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>JS - Fetch</title>
 </head>
 <body>
-    <div>
-        <button id="botaoCarregar">Carregando cervejas...</button>
+    <div id="divButton">
+        <button id="buttonLoad">Carregar endereços</button>
     </div>
-    <div id="cervejasDiv"></div>            
+    <div id="containerTable"></div>  
+
+    <script type="module" src="script.js"></script>
 </body>   
-
-<script>
-    let cervejas = [];
- 
-    //cs é um array de cervejas
-    const carregarDiv = cs => {
-        const div = document.getElementById("cervejasDiv");
-        const itensHtml = cs.map( ({name,alcohol}) => `<div>${name} -- ${alcohol}</div>` ); 
-        div.innerHTML = `${itensHtml.join("\n")}`;
-    }
-
-    async function carregarCervejas(){
-        try {
-            let res = await fetch("https://random-data-api.com/api/v2/beers?size=3");
-            cervejas = await res.json();
-            carregarDiv(cervejas);    
-        } catch (error) {
-            document.getElementById("cervejasDiv").innerHTML = "ERROR";
-        }
-    }
-
-    let botao = document.getElementById("botaoCarregar");
-    botao.addEventListener("click", () => carregarCervejas());                 
-</script>
 </html>
