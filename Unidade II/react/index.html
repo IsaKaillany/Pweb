@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>ReactZero</title>
 </head>
 <body>
@@ -12,16 +13,34 @@
     <script src="libs/react-dom.js"></script>
 
     <script>
+        const createElement = React.createElement;
+
+        const th1 = createElement('th', null, 'Nome');
+        const th2 = createElement('th', null, 'Cantor');
+        const th3 = createElement('th', null, 'Gênero');
+
+        const tr1 = createElement('tr', null,
+            createElement('td', null, 'Do I Wanna Know'),
+            createElement('td', null, 'Arctic Monkeys'),
+            createElement('td', null, 'Alternativa/Indie')
+            );
+            
+            const tr2 = createElement('tr', null,
+            createElement('td', null, 'Lovely'),
+            createElement('td', null, 'Billie Eilish feat. Khalid'),
+            createElement('td', null, 'Pop')
+        );
+
+        const thead = createElement('thead', null,
+            createElement('tr', null, th1, th2, th3)
+        );
+
+        const tbody = createElement('tbody', null, tr1, tr2);
+        const table = createElement('table', null, thead, tbody);
+
         ReactDOM.render(
-            React.createElement(
-                'h1',
-                {id: 'my-heading'},
-                React.createElement('span', null, 'React ',
-                    React.createElement('em', null, 'é muito'),
-                ),
-                ' massa!'
-            ),
-            document.getElementById('app')
+            table,
+            document.getElementById("app")
         );
     </script>
 </body>
