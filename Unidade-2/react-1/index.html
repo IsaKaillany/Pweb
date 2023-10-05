@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <button id="carregar">Carregar Músicas</button>
     <div id="app"></div>
 
     <script src="libs/react.js"></script>
@@ -16,24 +17,76 @@
     <script src="libs/babel.js"></script>
 
     <script type="text/babel">
-        const TabelaBebidas = () => {
+        const musicas = [
+            {
+                nome: 'Do I Wanna Know',
+                artista: 'Arctic Monkeys',
+                genero: 'Alternativa/Indie',
+            },
+            {
+                nome: 'Stressed Out',
+                artista: 'Twenty One Pilots',
+                genero: 'Rock Alternativo',
+            },
+            {
+                nome: 'Shameless',
+                artista: 'Camila Cabello',
+                genero: 'Pop',
+            },
+            {
+                nome: 'R.I.P. 2 My Youth',
+                artista: 'The Neighbourhood',
+                genero: 'Alternativa/Indie',
+            },
+            {
+                nome: 'Call Out My Name',
+                artista: 'The Weeknd',
+                genero: 'R&B/Soul',
+            },
+        ]
+
+        var colunas = ["Nome", "Artista", "Gênero"];
+
+        const Cabecalho = () => {
+            return (
+                <h1>Minha Tabela de Músicas</h1>
+            )
+        }
+
+        const TabelaFilmes = () => {
             return (
                 <div id="app">
-                    <table id="tabela" border="1">
+                    <table id="tabela">
                         <thead>
-                            <tr><th>Nome</th><th>Marca</th></tr>
+                            <tr>
+                                {colunas.map((col) => (
+                                    <th>{col}</th>
+                                ))}
+                            </tr>
                         </thead>
                         <tbody>
-                            <tr><td>Havana</td><td>Engenho Anísio Santiago</td></tr>
+                            {musicas.map((item, index) => (
+                                <tr>
+                                    <td>{item.nome}</td>
+                                    <td>{item.artista}</td>
+                                    <td>{item.genero}</td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
             )
         }
 
-        ReactDOM.render(
-            <TabelaBebidas />
-            , document.getElementById("app"))
+        const carregarTela = () => {
+            ReactDOM.render(
+                <div>
+                    <Cabecalho />
+                    <TabelaFilmes />
+                </div>
+                , document.getElementById("app"))
+        }
+        document.getElementById("carregar").addEventListener("click", carregarTela);
     </script>
 </body>
 
