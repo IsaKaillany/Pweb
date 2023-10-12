@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>ReceitaReact - 2</title>
 </head>
 
@@ -16,17 +17,49 @@
 
     <script type="text/babel">
 
+        class NavBar extends React.Component {
+            render() {
+                return (
+                    <nav id="navBar">
+                        <h1>{this.props.message}</h1>
+                    </nav>
+                )
+            }
+        }
+
         class TabelaBebidas extends React.Component {
             render() {
                 return (
-                    <div>
+                    <div id="container">
                         <h1>{this.props.title}</h1>
-                        <table id="tabela" border="1">
+                        <table id="tabela">
                             <thead>
-                                <tr><th>Nome</th><th>Marca</th></tr>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Marca</th>
+                                    <th>IBU</th>
+                                    <th>Teor alcoólico</th>
+                                </tr>
                             </thead>
                             <tbody>
-                                <tr><td>Havana</td><td>Engenho Anísio Santiago</td></tr>
+                                <tr>
+                                    <td>Havana</td>
+                                    <td>Engenho Anísio Santiago</td>
+                                    <td>25</td>
+                                    <td>5%</td>
+                                </tr>
+                                <tr>
+                                    <td>Havana</td>
+                                    <td>Engenho Anísio Santiago</td>
+                                    <td>25</td>
+                                    <td>5%</td>
+                                </tr>
+                                <tr>
+                                    <td>Havana</td>
+                                    <td>Engenho Anísio Santiago</td>
+                                    <td>25</td>
+                                    <td>5%</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -35,7 +68,10 @@
         }
 
         ReactDOM.render(
-            <TabelaBebidas title="Tabela de Bebidas" />
+            <div>
+                <NavBar message="SEJA BEM VINDO!" />
+                <TabelaBebidas title="Tabela de Bebidas" />
+            </div>
             ,
             document.getElementById("app"))
     </script>
