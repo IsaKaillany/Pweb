@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>ReceitaReact - 3</title>
 </head>
 
@@ -16,26 +17,41 @@
 
     <script type="text/babel">
 
-        const TabelaBebidas = ({ titulo, cabecalhos:[cabecalho1,cabecalho2] }) => { //desestruturação 
+        const TabelaBebidas = ({ titulo, cabecalhos, celulas }) => { //desestruturação 
             return (
                 <div>
                     <h1>{titulo}</h1>
                     <table id="tabela" border="1">
                         <thead>
-                            <tr><th>{cabecalho1}</th><th>{cabecalho2}</th></tr>
+                            <tr>
+                                {cabecalhos.map((cabecalho, index) => (
+                                    <th key={index}>{cabecalho}</th>
+                                ))}
+                            </tr>
                         </thead>
                         <tbody>
-                            <tr><td>Havana</td><td>Engenho Anísio Santiago</td></tr>
+                            {celulas.map((linha, rowIndex) => (
+                                <tr key={rowIndex}>
+                                    {linha.map((valor, cellIndex) => (
+                                        <td key={cellIndex}>{valor}</td>
+                                    ))}
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
             )
         }
 
-        const valoresCabecalhos = ["Nome", "Marca"]
+        const valoresCabecalhos = ["Nome", "Marca", "IBU"]
+        const valoresCelulas = [
+            ["Bebida 1", "Marca 1", "15"],
+            ["Bebida 2", "Marca 2", "30"],
+            ["Bebida 3", "Marca 3", "12"]
+        ]
 
         ReactDOM.render(
-            <TabelaBebidas titulo="minha tabela de cana" cabecalhos={valoresCabecalhos} />
+            <TabelaBebidas titulo="Minha Tabela de Cana" cabecalhos={valoresCabecalhos} celulas={valoresCelulas} />
             ,
             document.getElementById("app")
         )
