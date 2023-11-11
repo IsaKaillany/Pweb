@@ -1,17 +1,15 @@
 import { useState } from "react";
-import styles from "../styles/movies.module.css";
+import styles from "../styles/movies.module.css"
 
 export default function Movies({ data }) {
     const [searchQuery, setSearchQuery] = useState("");
 
     const handleSearch = async () => {
-        const res = await fetch(
-            `http://www.omdbapi.com/?apikey=e0d35ba4&s=${searchQuery}`
-        );
+        const res = await fetch(`http://www.omdbapi.com/?apikey=de1cc0e1&s=${searchQuery}`);
         const newData = await res.json();
         // Atualiza os resultados da pesquisa no estado data
         data.Search = newData.Search;
-    };
+      };
 
     return (
         <div className={styles.pageContainer}>
@@ -51,7 +49,7 @@ export async function getServerSideProps(context) {
     const searchQuery = query.q || "bagdad";
 
     const res = await fetch(
-        `http://www.omdbapi.com/?apikey=e0d35ba4&s=${searchQuery}`
+        `http://www.omdbapi.com/?apikey=de1cc0e1&s=${searchQuery}`
     );
     const data = await res.json();
 
