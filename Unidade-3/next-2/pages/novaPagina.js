@@ -1,13 +1,13 @@
+import { About } from "./about/about";
+import { Img } from "./img/img";
+import { Like } from "./like/like";
+
 export default function Principal() {
     return (
         <div>
-            <h1>Nova Página</h1>
-
-            <MariaPrea />
+            <Img/>
+            <About/>
+            <Like language="Node.js"/>
         </div>
     );
-}
-
-export function MariaPrea() {
-    return <h2>Morreu Maria Preá...</h2>;
 }
