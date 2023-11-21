@@ -7,7 +7,6 @@ export default function Movies({ data }) {
     const handleSearch = async () => {
         const res = await fetch(`http://www.omdbapi.com/?apikey=de1cc0e1&s=${searchQuery}`);
         const newData = await res.json();
-        // Atualiza os resultados da pesquisa no estado data
         data.Search = newData.Search;
       };
 
@@ -30,7 +29,7 @@ export default function Movies({ data }) {
                         <a
                             href={`https://www.imdb.com/title/${m.imdbID}/`}
                             target="_blank"
-                            rel="noopener noreferrer"
+                            // rel="noopener noreferrer"
                         >
                             <img src={m.Poster} alt={m.Title} />
                         </a>
