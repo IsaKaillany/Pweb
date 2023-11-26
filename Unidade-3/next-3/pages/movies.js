@@ -1,22 +1,24 @@
 import { useState } from "react";
-import styles from "../styles/movies.module.css"
+import styles from "../styles/movies.module.css";
 
-export default function Movies({ data }) {
+export default function Movies({ Idata }) {
     const [searchQuery, setSearchQuery] = useState("");
+    const [data, setData] = useState(Idata);
 
     const handleSearch = async () => {
-        const res = await fetch(`http://www.omdbapi.com/?apikey=de1cc0e1&s=${searchQuery}`);
+        const res = await fetch(
+            `http://www.omdbapi.com/?apikey=de1cc0e1&s=${searchQuery}`
+        );
         const newData = await res.json();
-        // Atualiza os resultados da pesquisa no estado data
-        data.Search = newData.Search;
-      };
+        setData(newData);
+    };
 
     return (
         <div className={styles.pageContainer}>
-            <div className={styles.forms}>
+            <div className={styles.searchArea}>
                 <input
                     type="text"
-                    placeholder="Digite sua pesquisa (Isso pode demorar)"
+                    placeholder="Digite sua pesquisa"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -25,20 +27,21 @@ export default function Movies({ data }) {
                 </button>
             </div>
             <div className={styles.moviesContainer}>
-                {data.Search.map((m) => (
-                    <div key={m.imdbID} className={styles.movieCard}>
-                        <a
-                            href={`https://www.imdb.com/title/${m.imdbID}/`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <img src={m.Poster} alt={m.Title} />
-                        </a>
-                        <div className={styles.movieText}>
-                            {m.Title} --- {m.Year}
+                {data.Search &&
+                    data.Search.map((m) => (
+                        <div key={m.imdbID} className={styles.movieCard}>
+                            <a
+                                href={`https://www.imdb.com/title/${m.imdbID}/`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img src={m.Poster} alt={m.Title} />
+                            </a>
+                            <div className={styles.movieText}>
+                                {m.Title} --- {m.Year}
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
             </div>
         </div>
     );
@@ -55,7 +58,7 @@ export async function getServerSideProps(context) {
 
     return {
         props: {
-            data,
+            Idata: data,
         },
     };
 }
