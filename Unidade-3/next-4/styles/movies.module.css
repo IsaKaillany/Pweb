@@ -47,13 +47,13 @@
     text-align: center;
 }
 
-.forms {
+.searchArea {
     text-align: center;
     display: flex;
     flex-direction: column;
 }
 
-.forms input {
+.searchArea input {
     text-align: center;
     padding: 4px;
     width: 300px;
